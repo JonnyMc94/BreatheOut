@@ -2,7 +2,7 @@ import firebase from "firebase";
 import "firebase/auth";
 import "firebase/app";
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyCu6RDpWNFTFF48kqIjKfBSwrrdi9112d4",
   authDomain: "breatheout-ce632.firebaseapp.com",
   databaseURL:
@@ -15,10 +15,9 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
 firebase.analytics();
 
 firebase.auth();
 
-export default {
-  firebaseConfig,
-};
+export default firebase;
