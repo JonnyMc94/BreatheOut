@@ -1,0 +1,24 @@
+.body {
+
+}
+
+.card-img-overlay {
+  border-radius: 100px !important;
+  transform: scale(1);
+  transition: all ease 200ms;
+}
+
+
+.container-fluid {
+  padding-top: 10 + "rem";
+  padding-bottom: 10 + "rem";
+  padding-right: 10 + "rem";
+  padding-left: 10 + "rem"
+}
+
+.card:hover{
+  box-shadow: 25px 25px 25px 25px rgba(0, 0,0, 0.253) !important;
+  transform:scale(1.05);
+  transition: all ease 200ms;
+}
+
