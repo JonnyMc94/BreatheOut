@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import YogaChoiceCard from './YogaChoiceCard.js'
-import './pages.css'
+import './components.css'
 
 class YogaChoice extends Component {
   
