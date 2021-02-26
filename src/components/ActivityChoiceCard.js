@@ -1,16 +1,17 @@
 import React from 'react';
 
-const YogaChoiceCard = (props) => {
+
+const ActivityChoiceCard = (props) => {
   return (
   
     // <div className="container-fluid d-flex justify-content-center">
-    <div className="card border border-dark shadow-0 mb-3" style={{ maxWidth: 18 + "rem"}}>
-      <p className="card-text text-primary">
+    <div className="card-choice border border-light shadow-0 mb-3" style={{ maxWidth: 18 + "rem"}}>
+      <div className="card-text text-primary">
         <p>{ props.question }</p>
-    </p>
+    </div>
       <div className="card-body">
-        <div class="form-group">
-          <select class="custom-select">
+        <div className="form-group">
+          <select className="custom-select">
             <option selected="">Please select your answer</option>
             <option value="1">{ props.answer1 }</option>
             <option value="2">{ props.answer2 }</option>
@@ -18,10 +19,10 @@ const YogaChoiceCard = (props) => {
           </select>
         </div>
       </div>
-  </div>
+    </div>
   
   
 
   )};
 
-export default YogaChoiceCard;
+export default ActivityChoiceCard;

@@ -1,5 +1,6 @@
 import React from 'react';
-import './components.css'
+import { Link } from 'react-router-dom';
+import './pages.css';
 
 const ContentCard = (props) => {
   return (
@@ -12,7 +13,7 @@ const ContentCard = (props) => {
         <p className="card-text text-light">
          { props.cardText }
         </p>
-        <a href="#" className="btn btn-success">Go Anywhere</a>
+        <Link to={`/${props.choiceName}`} className= "btn btn-primary" >Explore</Link>
       </div>
   </div>
   

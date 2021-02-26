@@ -5,7 +5,7 @@
 .card-img-overlay {
   border-radius: 100px !important;
   transform: scale(1);
-  transition: all ease 200ms;
+  transition: all ease 500ms;
 }
 
 
@@ -19,6 +19,20 @@
 .card:hover{
   box-shadow: 25px 25px 25px 25px rgba(0, 0,0, 0.253) !important;
   transform:scale(1.05);
-  transition: all ease 200ms;
+  transition: all ease 500ms;
+}
+
+.col-3 {
+  margin: 0 auto;
+  border-radius: 20%;
+  border-color:rgba(0, 0,0, 0.253) transparent !important;
+}
+
+.card-group {
+  margin-top: 220px;
+}
+
+.card-choice {
+  padding-top: 30px;
 }
 

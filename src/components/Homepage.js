@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ContentCard from './ContentCard.js'
+import YogaChoice from './YogaChoice.js'
 import img1 from '../assets/meditation.jpg';
 import img2 from '../assets/yoga2.jpg';
 import './pages.css'
@@ -14,13 +15,14 @@ class Homepage extends Component {
         <div className="row">
           <div className="row-3" style={{ paddingTop: 30 + "px", paddingBottom: 30 + "px", borderRadius: 50 + "px" }}>
             <ContentCard imgsrc={img1} imgalt={"Lotus-flower"}
-              cardTitle={"Mindfulness & Meditaiton"} cardText={"A place where you can explore meditation and midfulness practices"} />
+              cardTitle={"Mindfulness & Meditaiton"} cardText={"A place where you can explore meditation and midfulness practices"} choiceName={"MeditationChoice"}/>
           </div>
           <div className="row-3" style={{ paddingTop: 30 + "px", paddingBottom: 30 + "px"}}>
             <ContentCard imgsrc={img2} imgalt={"Yoga-Pose-Sunset"}
-              cardTitle={"Yoga & Mobility"} cardText={"A place where you can explore stretching, yoga and mobility practices"}  />
+              cardTitle={"Yoga & Mobility"} cardText={"A place where you can explore stretching, yoga and mobility practices"} choiceName={"YogaChoice"}/>
           </div>
         </div>
+       
       </div>
     );
   }
