@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import "./App.css";
 import "bootswatch/dist/minty/bootstrap.css";
 import Navbar from "./components/Navbar";
-import Firebase from "firebase";
+import Firebase from "./firebase/firebaseIndex";
 import { Route, Switch } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import Logout from './components/Logout';
+import Logout from "./components/Logout";
+import Homepage from './components/Homepage';
 
 class App extends Component {
   constructor(props) {
@@ -44,7 +45,13 @@ class App extends Component {
             <Route path="/Login" render={(props) => <Login />} />
             <Route path="/Signup" render={(props) => <Signup />} />
             <Route path="/Logout" render={(props) => <Logout />} />
+            <Route path="/Homepage" render={(props) => <Homepage />} />
           </Switch>
+
+          {this.state.currentUser !== null && (
+            <i>Logged in as: {this.state.currentUser.email}</i>
+          )}
+          {this.state.authenticated && <b>authenticated</b>}
         </div>
       </div>
     );

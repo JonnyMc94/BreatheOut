@@ -6,7 +6,7 @@ export default class Navbar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a className="navbar-brand" href="/">
+        <a className="navbar-brand" href="/Homepage">
           BreatheOut
         </a>
         <button

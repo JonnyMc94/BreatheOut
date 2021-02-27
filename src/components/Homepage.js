@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ContentCard from './ContentCard.js'
 import img1 from '../assets/meditation.jpg';
 import img2 from '../assets/yoga2.jpg';
-import './pages.css'
+//import './pages.css'
 
 class Homepage extends Component {
   
