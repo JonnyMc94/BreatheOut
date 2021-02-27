@@ -2,12 +2,16 @@ import React, { Component } from "react";
 import "./App.css";
 import "bootswatch/dist/minty/bootstrap.css";
 import Navbar from "./components/Navbar";
-import Firebase from "./firebase/firebaseIndex";
-import { Route, Switch } from "react-router-dom";
+import Firebase from "firebase";
+import { Route, Switch, BrowserRouter} from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import Logout from "./components/Logout";
+import Logout from './components/Logout';
 import Homepage from './components/Homepage';
+import YogaChoice from './components/YogaChoice';
+import MeditationChoice from './components/MeditationChoice';
+import MeditationContent from './components/MeditationContent';
+import YogaContent from './components/YogaContent';
 
 class App extends Component {
   constructor(props) {
@@ -18,7 +22,6 @@ class App extends Component {
       currentUser: null,
     };
   }
-
   // check if user is authenticated,
   // if they are then set to true, otherwise false
   // currentUser holds the user object when logged in
@@ -35,24 +38,25 @@ class App extends Component {
           }));
     });
   }
-
   render() {
     return (
       <div className="App">
-        <Navbar />
-        <div className="container-lg">
-          <Switch>
-            <Route path="/Login" render={(props) => <Login />} />
-            <Route path="/Signup" render={(props) => <Signup />} />
-            <Route path="/Logout" render={(props) => <Logout />} />
-            <Route path="/Homepage" render={(props) => <Homepage />} />
-          </Switch>
-
-          {this.state.currentUser !== null && (
-            <i>Logged in as: {this.state.currentUser.email}</i>
-          )}
-          {this.state.authenticated && <b>authenticated</b>}
-        </div>
+        <BrowserRouter>
+          <Navbar />
+          {/* <Homepage /> */}
+          <div className="container-lg">
+              <Switch>
+                <Route path="/Login" render={(props) => <Login />} />
+                <Route path="/Signup" render={(props) => <Signup />} />
+                <Route path="/Logout" render={(props) => <Logout />} />
+                <Route path="/Homepage" render={(props) => <Homepage />} />
+                <Route path="/YogaChoice" render={(props) => <YogaChoice />} />
+                <Route path="/MeditationChoice" render={(props) => <MeditationChoice />} />
+                <Route path="/MeditationContent" render={(props) => <MeditationContent />} />
+                <Route path="/YogaContent" render={(props) => <YogaContent />} />
+              </Switch>
+          </div>
+        </BrowserRouter>
       </div>
     );
   }
