@@ -7,6 +7,7 @@ import { Route, Switch } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Logout from './components/Logout';
+import Profile from './components/Profile';
 
 class App extends Component {
   constructor(props) {
@@ -44,6 +45,7 @@ class App extends Component {
             <Route path="/Login" render={(props) => <Login />} />
             <Route path="/Signup" render={(props) => <Signup />} />
             <Route path="/Logout" render={(props) => <Logout />} />
+            <Route path="/Profile" render={(props) => <Profile />} />
           </Switch>
         </div>
       </div>
