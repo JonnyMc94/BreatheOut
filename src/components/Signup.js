@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Firebase from "../firebase/firebaseIndex";
+import "firebase/database";
 
 class Signup extends Component {
   constructor(props) {
@@ -8,11 +9,45 @@ class Signup extends Component {
     this.state = {
       email: "",
       password: "",
+      username: "",
       error: null,
+      profileData: [],
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  async componentDidMount() {
+    try {
+      this.getDataFromDatabase();
+    } catch (error) {
+      console.log(error);
+      this.setState({ error: error });
+    }
+  }
+
+  getDataFromDatabase() {
+    // download and create json array of profile data
+    let ref1 = Firebase.database().ref("profiles");
+
+    ref1.on("value", (snapshot) => {
+      // json array
+      let msgData = snapshot.val();
+      let newMessagesFromDB = [];
+      for (let m in msgData) {
+        // create a json object of our object
+        let currObject = {
+          email: msgData[m].email,
+          id: msgData[m].id,
+          name: msgData[m].name,
+        };
+        // add it to the local array
+        newMessagesFromDB.push(currObject);
+      } // end of for loop
+      // set state
+      this.setState({ profileData: newMessagesFromDB });
+    });
   }
 
   handleInputChange(event) {
@@ -22,7 +57,7 @@ class Signup extends Component {
   handleSubmit(event) {
     // submit to create new user
     event.preventDefault();
-    const { email, password } = this.state;
+    const { email, password, username } = this.state;
     Firebase.auth()
       .createUserWithEmailAndPassword(email, password)
       .then((user) => {
@@ -31,10 +66,23 @@ class Signup extends Component {
       .catch((error) => {
         this.setState({ error: error });
       });
+
+    let user = Firebase.auth().currentUser;
+
+    user
+      .updateProfile({
+        displayName: username,
+      })
+      .then((user) => {
+        console.log("username updated");
+      })
+      .catch((error) => {
+        this.setState({ error: error });
+      });
   }
 
   render() {
-    const { email, password, error } = this.state;
+    const { email, password, username, error } = this.state;
     const handleInput = this.handleInputChange;
 
     return (
@@ -47,6 +95,16 @@ class Signup extends Component {
         )}
 
         <form onSubmit={this.handleSubmit}>
+          <div>
+            <label> username: </label>
+            <input
+              type="username"
+              name="username"
+              placeholder="enter username"
+              value={username}
+              onChange={handleInput}
+            />
+          </div>
           <div>
             <label> email address: </label>
             <input
@@ -67,7 +125,9 @@ class Signup extends Component {
               onChange={handleInput}
             />
           </div>
-          <button>Log In</button>
+          <button>Sign Up</button>
+          <br />
+          
         </form>
 
         {/* <form>
@@ -107,7 +167,7 @@ class Signup extends Component {
           </fieldset>
         </form> */}
       </div>
-    )
+    );
   }
 }
 
